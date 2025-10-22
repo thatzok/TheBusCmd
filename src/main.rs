@@ -1,7 +1,5 @@
-mod client;
-
-use crate::client::get_current_vehicle;
-use client::{RequestConfig, get_telemetry_data, send_telemetry_bus_cmd};
+use the_bus_telemetry::api::get_current_vehicle_name;
+use the_bus_telemetry::api::{RequestConfig, send_telemetry_bus_cmd};
 
 #[tokio::main]
 async fn main() {
@@ -11,17 +9,17 @@ async fn main() {
         return;
     }
     let cmd = cmd.unwrap();
+    let mut config = RequestConfig::new();
 
-    let vehicle = get_current_vehicle().await;
+    let vehicle_name = get_current_vehicle_name(&config).await;
 
-    if vehicle.is_empty() {
+    if vehicle_name.is_empty() {
         println!("No vehicle found, not in bus.");
         return;
     }
-    println!("Vehicle: {}", vehicle);
 
-    let config = RequestConfig::new().vehicle(vehicle);
+    println!("Vehicle-Name: {}", vehicle_name);
+    config.vehicle_name = vehicle_name;
 
     let _ = send_telemetry_bus_cmd(&config, &cmd).await;
-
 }
