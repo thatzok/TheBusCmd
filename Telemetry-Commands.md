@@ -1,6 +1,6 @@
-# TheBus Telemetry Bus commands
+# "The Bus" Telemetry Bus Commands
 
-| <command>                                             | Key     | Info                    | Values |          
+| Command                                               | Key     | Info                    | Values |          
 |-------------------------------------------------------|---------|-------------------------|--------|
 | sendevent?event=ToggleDoorClearance                   | KeyDown | Door Clearance          |        |
 | setbutton?button=<DoorSelector>&state=1               | KeyDown | Doors                   |        |
