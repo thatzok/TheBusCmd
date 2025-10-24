@@ -1,5 +1,5 @@
 use std::time::Duration;
-use the_bus_telemetry::api::{RequestConfig, get_current_vehicle_name, get_vehicle};
+use the_bus_telemetry::api::{get_current_vehicle_name, get_vehicle, RequestConfig};
 use the_bus_telemetry::api2vehicle::get_vehicle_state_from_api;
 use the_bus_telemetry::vehicle::{init_vehicle_state, print_vehicle_state};
 use the_bus_telemetry::vehicle_diff::compare_vehicle_states;
@@ -52,13 +52,19 @@ async fn main() {
             continue;
         }
 
-        if vehicle_name != old_vehicle_name {
-            println!("Vehicle-Name is now: {}", vehicle_name);
-            old_vehicle_name = vehicle_name.clone();
-        }
-
         zaehler += 1;
         let vehicle = vehicle_response.unwrap();
+        if config.vehicle_model != vehicle.vehicle_model {
+            config.vehicle_model = vehicle.vehicle_model.clone();
+        }
+
+        if vehicle_name != old_vehicle_name {
+            println!(
+                "Vehicle is now: model={} name={}",
+                config.vehicle_model, vehicle_name
+            );
+            old_vehicle_name = vehicle_name.clone();
+        }
 
         let new_vehicle_state = get_vehicle_state_from_api(vehicle);
         if config.debugging {
