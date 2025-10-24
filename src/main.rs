@@ -17,8 +17,8 @@ async fn main() {
         println!("No vehicle found, not in bus.");
         return;
     }
-
     println!("Vehicle-Name: {}", vehicle_name);
+    
     config.vehicle_name = vehicle_name;
 
     let _ = send_telemetry_bus_cmd(&config, &cmd).await;

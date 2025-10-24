@@ -14,6 +14,7 @@ async fn main() {
     let interval_ok = Duration::from_millis(sleeptime_ok);
 
     let mut vehicle_name = "".to_string();
+    let mut old_vehicle_name = "".to_string();
 
     let mut config = RequestConfig::new();
     // config.debugging=true;
@@ -32,6 +33,7 @@ async fn main() {
         if vehicle_name.is_empty() {
             println!("No vehicle found, not in bus.");
             vehicle_state = init_vehicle_state();
+            old_vehicle_name = "".to_string();
             sleep(interval_error).await;
             continue;
         }
@@ -50,9 +52,13 @@ async fn main() {
             continue;
         }
 
+        if vehicle_name != old_vehicle_name {
+            println!("Vehicle-Name is now: {}", vehicle_name);
+            old_vehicle_name = vehicle_name.clone();
+        }
+
         zaehler += 1;
         let vehicle = vehicle_response.unwrap();
-        // println!("{:?}", vehicle);
 
         let new_vehicle_state = get_vehicle_state_from_api(vehicle);
         if config.debugging {
