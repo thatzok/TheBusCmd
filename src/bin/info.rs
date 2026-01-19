@@ -1,8 +1,8 @@
 use std::time::Duration;
+use komsi::vehicle::VehicleState;
 use the_bus_telemetry::api::{get_current_vehicle_name, get_vehicle, RequestConfig};
 use the_bus_telemetry::api2vehicle::get_vehicle_state_from_api;
-use the_bus_telemetry::vehicle::{init_vehicle_state, print_vehicle_state};
-use the_bus_telemetry::vehicle_diff::compare_vehicle_states;
+
 use tokio::time::sleep;
 
 #[tokio::main]
@@ -19,7 +19,7 @@ async fn main() {
     let mut config = RequestConfig::new();
     // config.debugging=true;
 
-    let mut vehicle_state = init_vehicle_state();
+    let mut vehicle_state = VehicleState::default();
 
     let mut zaehler = 0;
 
@@ -32,7 +32,7 @@ async fn main() {
 
         if vehicle_name.is_empty() {
             println!("No vehicle found, not in bus.");
-            vehicle_state = init_vehicle_state();
+            vehicle_state = VehicleState::default();
             old_vehicle_name = "".to_string();
             sleep(interval_error).await;
             continue;
@@ -68,10 +68,10 @@ async fn main() {
 
         let new_vehicle_state = get_vehicle_state_from_api(vehicle);
         if config.debugging {
-            print_vehicle_state(&new_vehicle_state);
+            new_vehicle_state.print();
         }
 
-        compare_vehicle_states(&vehicle_state, &new_vehicle_state, false);
+        vehicle_state.compare(&new_vehicle_state, false, None);
 
         vehicle_state = new_vehicle_state;
 
