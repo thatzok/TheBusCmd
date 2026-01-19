@@ -1,9 +1,11 @@
 [package]
 name = "TheBusCmd"
-version = "1.4.0"
+version = "1.5.0"
 edition = "2024"
-license = "MIT"
 readme = "README.md"
+authors = ["ThatZok <af@komplix.de>"]
+license = "GPL-3.0-or-later"
+license-file = "LICENSE"
 
 [dependencies]
 tokio = { version = "1.48.0", features = ["full"] }
