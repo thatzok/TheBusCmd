@@ -1,8 +1,17 @@
 # TheBus2Cmd, TheBusInfo
 
+[Deutsche Version](README.de.md)
+
 TheBus2Cmd and TheBusInfo are API clients (the API is called "Telemetry" in the game) for the bus simulator "**The Bus**" that allow you to send commands to your bus and query its status.<br>
 
 The "Telemetry" feature must be enabled in the game's settings, and the programs must be running on the PC on which "**The Bus**" is running.
+
+## Download & Installation
+
+1. Go to the [latest release page](https://github.com/YourUsername/TheBusCmd/releases/latest).
+2. Download the `TheBusCmd_x.x.x_Windows.zip` file.
+3. Extract the contents of the ZIP file to a folder of your choice.
+4. You will find two executable files: `TheBusCmd.exe` and `TheBusInfo.exe`.
 
 ## Usage Example: TheBusCmd
 In order to control the bus's settings, the game must be in "free play" and the player must be sitting in the driver's seat of the bus.
@@ -18,9 +27,8 @@ The program runs in an endless loop and displays the changing bus values. It can
   ```sh
   TheBusInfo
   ```
-If you don't want to compile the two EXE files yourself, you can also download just the two files **TheBusCmd.EXE** and **TheBusInfo.EXE** directly from the latest release package.
 
- Have fun!
+Have fun!
 
 
 ## License
