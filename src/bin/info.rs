@@ -1,5 +1,5 @@
-use std::time::Duration;
 use komsi::vehicle::VehicleState;
+use std::time::Duration;
 use the_bus_telemetry::api::{get_current_vehicle_name, get_vehicle, RequestConfig};
 use the_bus_telemetry::api2vehicle::get_vehicle_state_from_api;
 

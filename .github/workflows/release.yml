@@ -1,0 +1,48 @@
+name: Windows Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-windows:
+    name: Build Windows Package
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      # 1. Binaries bauen
+      - name: Build Binaries
+        run: |
+          cargo build --release
+          cargo build --release --bin TheBusInfo
+
+      # 2. Paketstruktur vorbereiten
+      - name: Prepare Package Folder
+        run: |
+          mkdir release_pkg
+          cp target/release/TheBusCmd.exe release_pkg/
+          cp target/release/TheBusInfo.exe release_pkg/
+
+      # 3. ZIP mit Versionsnummer erstellen
+      - name: Create ZIP Archive
+        run: |
+          Compress-Archive -Path release_pkg/* -DestinationPath "TheBusCmd_${{ github.ref_name }}_Windows.zip"
+
+      # 4. ZIP-Datei zum GitHub Release hochladen
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "TheBusCmd_${{ github.ref_name }}_Windows.zip"
+          generate_release_notes: true
