@@ -1,7 +1,7 @@
-use komsi::vehicle::VehicleState;
+use komsi::VehicleState;
 use std::time::Duration;
-use the_bus_telemetry::api::{get_current_vehicle_name, get_vehicle, RequestConfig};
-use the_bus_telemetry::api2vehicle::get_vehicle_state_from_api;
+use the_bus_telemetry::{get_current_vehicle_name, get_vehicle, RequestConfig};
+use the_bus_telemetry::get_vehicle_state_from_api;
 
 use tokio::time::sleep;
 

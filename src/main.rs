@@ -1,5 +1,5 @@
-use the_bus_telemetry::api::get_current_vehicle_name;
-use the_bus_telemetry::api::{RequestConfig, send_telemetry_bus_cmd};
+use the_bus_telemetry::get_current_vehicle_name;
+use the_bus_telemetry::{RequestConfig, send_telemetry_bus_cmd};
 
 #[tokio::main]
 async fn main() {

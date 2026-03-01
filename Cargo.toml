@@ -1,15 +1,16 @@
 [package]
 name = "TheBusCmd"
-version = "1.6.0"
+version = "1.7.0"
 edition = "2024"
+rust-version = "1.93.1"
 readme = "README.md"
 authors = ["ThatZok <af@komplix.de>"]
 license = "GPL-3.0-or-later"
 
 [dependencies]
 tokio = { version = "1.48.0", features = ["full"] }
-the-bus-telemetry = "4.3.0"
-komsi = "1.1.0"
+the-bus-telemetry = "4.4.0"
+komsi = "1.5.1"
 
 [[bin]]
 name = "TheBusInfo"
