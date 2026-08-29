@@ -1,6 +1,6 @@
 [package]
 name = "TheBusCmd"
-version = "1.7.1"
+version = "1.8.0"
 edition = "2024"
 rust-version = "1.93.1"
 readme = "README.md"
@@ -9,8 +9,8 @@ license = "GPL-3.0-or-later"
 
 [dependencies]
 tokio = { version = "1.48.0", features = ["full"] }
-the-bus-telemetry = "4.4.0"
-komsi = "1.5.1"
+the-bus-telemetry = "5.3"
+komsi = "2.0"
 
 [[bin]]
 name = "TheBusInfo"
