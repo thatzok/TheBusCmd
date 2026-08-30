@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "TheBusCmd"
-version = "1.8.0"
+version = "1.9.0"
 dependencies = [
  "komsi",
  "the-bus-telemetry",
@@ -1238,9 +1238,9 @@ dependencies = [
 
 [[package]]
 name = "the-bus-telemetry"
-version = "5.3.0"
+version = "5.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "587d07451505cda506a402b5016939925da4d419733ba8c2215ab231dc53040b"
+checksum = "c41796a7c148d107b180f9fd3fa5f52f5a00cc2e26cae2fbcc30d7aaf1999ece"
 dependencies = [
  "komsi",
  "reqwest",
